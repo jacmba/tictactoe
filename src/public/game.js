@@ -5,23 +5,26 @@ const getPos = (x, w, h) => ({
   y: getCell(x.y, h)
 })
 
-const loop = (screen, context) => {
+const loop = (screen, context, board) => {
   const scr = screen || document.getElementById('screen')
   const ctx = context || scr.getContext('2d')
+  const brd = board || makeBoard(3, 3)
 
   scr.onclick = click
 
   const pos = getClick()
   const cell = pos === null ? null : getPos(pos, scr.width, scr.height)
-  if(cell !== null) console.log(cell)
 
-  render(scr, ctx)
+  const y = cell ? setValue(brd, cell.x, cell.y, 1) : brd
+
+  render(scr, ctx, brd)
 
   setTimeout(
     loop,
     100,
     scr,
-    ctx
+    ctx,
+    y
   )
 }
 
