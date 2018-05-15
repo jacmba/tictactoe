@@ -1,0 +1,23 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "Tic tac toe functional AI game",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "true",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jacmba/tictactoe.git"
+  },
+  "author": "Jacinto Mba",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/jacmba/tictactoe/issues"
+  },
+  "homepage": "https://github.com/jacmba/tictactoe#readme",
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}

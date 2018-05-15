@@ -1,0 +1,16 @@
+{
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "modules": true
+  },
+
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  
+  "parserOptions": {
+    "ecmaVersion": 2018
+  }
+}
