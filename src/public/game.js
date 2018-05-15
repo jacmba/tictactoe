@@ -5,7 +5,7 @@ const getPos = (x, w, h) => ({
   y: getCell(x.y, h)
 })
 
-const loop = (screen, context, board) => {
+const loop = (screen, context, board, turn = 1) => {
   const scr = screen || document.getElementById('screen')
   const ctx = context || scr.getContext('2d')
   const brd = board || makeBoard(3, 3)
@@ -19,18 +19,21 @@ const loop = (screen, context, board) => {
   scr.onclick = click
 
   const pos = getClick()
-  const cell = pos === null ? null : getPos(pos, scr.width, scr.height)
+  const cell = pos === null || turn !== 1 ? null : getPos(pos, scr.width, scr.height)
 
-  const y = cell ? setValue(brd, cell.x, cell.y, 1) : brd
+  const y = turn === 1 ? (cell ? setValue(brd, cell.x, cell.y, 1) : brd) : aiPlay(brd)
 
-  render(scr, ctx, brd)
+  const t = cell ? 2 : 1
+
+  render(scr, ctx, y)
 
   setTimeout(
     loop,
     100,
     scr,
     ctx,
-    y
+    y,
+    t
   )
 }
 
