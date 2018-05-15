@@ -44,6 +44,18 @@ const drawVal = (x, y, w, h, v, ctx) => {
   ctx.fillText(v === 1 ? 'O' : 'X', getCoord(x, w), getCoord(y, h))
 }
 
+const drawWin = (ctx, w, h, v) => {
+  const txt = `Player ${v} wins !!`
+  console.log(txt)
+  ctx.font = '56px Verdana'
+  ctx.fillStyle = 'blue'
+  ctx.strokeStyle = 'white'
+  ctx.textAlign = 'center'
+  ctx.lineWidth = 8
+  ctx.strokeText(txt, Math.floor(w / 2), Math.floor(h / 2))
+  ctx.fillText(txt, Math.floor(w / 2), Math.floor(h / 2))
+}
+
 const drawBoard = (b, w, h, ctx) =>
   b.reduce((p, c, y) =>
     c.reduce((p, c, x) => drawVal(x, y, w, h, c, ctx), 0), 0)

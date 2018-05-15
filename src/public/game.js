@@ -10,6 +10,12 @@ const loop = (screen, context, board) => {
   const ctx = context || scr.getContext('2d')
   const brd = board || makeBoard(3, 3)
 
+  const win = checkWin(brd)
+  if(win > 0) {
+    drawWin(ctx, screen.width, screen.height, win)
+    return
+  }
+
   scr.onclick = click
 
   const pos = getClick()
