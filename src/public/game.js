@@ -16,6 +16,11 @@ const loop = (screen, context, board, turn = 1) => {
     return
   }
 
+  if (findEmpty(brd).length === 0) {
+    drawWin(ctx, screen.width, screen.height, 0)
+    return
+  }
+
   scr.onclick = click
 
   const pos = getClick()

@@ -39,19 +39,20 @@ const getCoord = (x, l) => {
 
 const drawVal = (x, y, w, h, v, ctx) => {
   if(v === 0) return
-  ctx.font = '20px Verdana'
+  ctx.font = '36px sans'
+  ctx.textAlign = 'center'
   ctx.fillStyle = ctx.strokeStyle
   ctx.fillText(v === 1 ? 'O' : 'X', getCoord(x, w), getCoord(y, h))
 }
 
 const drawWin = (ctx, w, h, v) => {
-  const txt = `Player ${v} wins !!`
+  const txt = v > 0 ? `Player ${v} wins !!` : 'Draw !!'
   console.log(txt)
-  ctx.font = '56px Verdana'
-  ctx.fillStyle = 'blue'
-  ctx.strokeStyle = 'white'
+  ctx.font = 'italic bold 36px Courier New'
+  ctx.fillStyle = 'yellow'
+  ctx.strokeStyle = 'black'
   ctx.textAlign = 'center'
-  ctx.lineWidth = 8
+  ctx.lineWidth = 6
   ctx.strokeText(txt, Math.floor(w / 2), Math.floor(h / 2))
   ctx.fillText(txt, Math.floor(w / 2), Math.floor(h / 2))
 }
