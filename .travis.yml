@@ -1,0 +1,16 @@
+sudo: required
+
+services:
+  - docker
+
+node_js:
+  "8"
+
+branches:
+  only:
+  - master
+
+after_success:
+- docker build -t "$DOCKER_IMAGE":latest
+- docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+- docker push "$DOCKER_IMAGE":latest
